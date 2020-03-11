@@ -152,3 +152,5 @@ Leave mysql terminal
     exit;
 &nbsp;
 After this, you'll be able to connect to mysql-server using workbench with the new user we just created.
+
+![logo](https://raw.githubusercontent.com/elizeumadeira/mysql-docker/mysql-server/test-screen-output-1.jpg)
