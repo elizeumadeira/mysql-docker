@@ -137,12 +137,12 @@ If everything went well, you're now in the mysql console inside Docker container
 
 Change the root password (change 'mysql' for the desired password)
 
-    ALTER USER 'root'@'localhost' IDENTIFIED BY 'mysql';
+    ALTER USER 'root'@'localhost' IDENTIFIED with mysql_native_password BY 'mysql';
 &nbsp;
 We need a user to connect with workbench in my host computer, so I need a user with all IPs privileges granted (nos just localhost). I can achieve this by changing the IPs the root can access or create a new user and leave the root as is.
 I prefer to use a new user (for no particular reason, as you'll see below, the new user will basically be a root with a different name) instead changing root privileges (again, change 'mysql' for the desired password).
 
-    create user 'user'@'%' identified by 'mysql';
+    create user 'user'@'%' identified with mysql_native_password by 'mysql';
 &nbsp;
 
     grant all privileges on *.* to 'user'@'%' with grant option;
@@ -150,7 +150,13 @@ I prefer to use a new user (for no particular reason, as you'll see below, the n
 Leave mysql terminal
 
     exit;
+    
+Optional
+Send custom configuration file to mysql inside docker
+
+    docker cp <container-id>:/usr/ C:/mysql/my.cnf
 &nbsp;
+
 After this, you'll be able to connect to mysql-server using workbench with the new user we just created.
 
 ![logo](https://raw.githubusercontent.com/elizeumadeira/mysql-docker/mysql-server/test-screen-output-1.jpg)
